@@ -1,0 +1,48 @@
+.coin-edit-form{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    padding: 50px 0 50px 0;
+}
+.coin-edit-form>div{
+    display: grid;
+    grid-template-rows: repeat(6, min-content);
+    gap: 10px;
+}
+.coin-edit-form>div>label{
+    font-weight: 700;
+    display:grid;
+    grid-template-rows: 1fr 1fr;
+}
+#short-description{
+    grid-row: 1/3;
+    grid-template-rows: 1fr 3fr;
+    min-height: 98px;
+}
+#long-description{
+    grid-row: 3/5;
+    grid-template-rows: 1fr 3fr;
+    min-height: 98px;
+}
+.coin-edit-form>div>div{
+    margin-top: 170px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+}
+.coin-edit-form>div>div>button{
+    height: min-content;
+    padding: 10px 40px 10px 40px;
+    border: 0;
+    border-radius: 0;
+    width: min-content;
+    background-color: blueviolet;
+    color: azure;
+}
+.coin-edit-form>div>div>a>button{
+    height: min-content;
+    width: max-content;
+    padding: 10px 40px 10px 40px;
+    border: 0;
+    border-radius: 0;
+}

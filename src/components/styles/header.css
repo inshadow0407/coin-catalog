@@ -1,0 +1,33 @@
+.header{
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 5fr 1fr 1fr;
+    justify-content: space-between;
+    align-items: center;
+    color:azure;
+    font-weight: bold;
+}
+.navigation{
+    margin: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap:10px;
+    margin-right: 10px;
+    justify-items: center;
+}
+.logo{
+    margin: 0;
+    color:yellow;
+    font-size: 48px;
+    font-weight: 900;
+}
+.header>a>button{
+    border: 0;
+    border-radius: 0;
+}
+.site-name>a, .navigation>a{
+    color: azure;
+    text-decoration: none;
+    cursor: pointer;
+}

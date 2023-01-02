@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+.wrapper{
+  margin:auto;
+  max-width: 1600px;
+}
+header{
+  background-color: blueviolet;
+}
+.main{
+  padding: 10px 15%;
+}
+footer{
+  background-color: black;
+  color:white;
+}
