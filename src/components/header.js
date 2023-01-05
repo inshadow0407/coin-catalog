@@ -1,8 +1,10 @@
 import React from "react";
 import  "./styles/header.css"
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function Header(){
+    let logged = useSelector((state)=>state.current.logged)
     return (
         <header>
         <div className="wrapper header">
@@ -13,8 +15,8 @@ export default function Header(){
                 <Link to="/CommemorativeCoins">Инвестиционные монеты</Link>
                 <Link to="/ExclusiveCoins">Эксклюзивные монеты</Link>
             </div>
-            <p className="username">Admin</p>
-            <Link to="/login"><button className="login-button">Войти</button></Link>
+            <p className="username"></p>
+            <Link to="/login"><button className="login-button">{(logged)?"Выйти":"Войти"}</button></Link>
         </div>
     </header>
     )

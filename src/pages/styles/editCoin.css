@@ -30,6 +30,10 @@
     grid-template-columns: 1fr 1fr;
     justify-items: center;
 }
+#save{
+    font-size: 25px;
+    color: green;
+}
 .coin-edit-form>div>div>button{
     height: min-content;
     padding: 10px 40px 10px 40px;

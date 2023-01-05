@@ -3,8 +3,18 @@ import { Link } from "react-router-dom";
 import Searchbox from "../components/searchbox";
 import "./styles/MainPage.css"
 import CoinsList from "../components/coinsList";
+import { useDispatch } from "react-redux";
+import { getCoinsByParams, getOptions } from "../store/store";
+import { useSearchParams } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function MainPage(props){
+    let dispatch = useDispatch();
+    let [searchParams, setSearchParams]= useSearchParams();
+    dispatch(getOptions());
+    useEffect(()=>{},[dispatch]);
+
+
     if(props.category==="*"){
         return(
             <>
@@ -15,6 +25,7 @@ export default function MainPage(props){
         )
     }
     else if(props.category!==undefined){
+        dispatch(getCoinsByParams(props.category,searchParams.toString()));
         return(
             <>
             <Searchbox/>
@@ -22,7 +33,18 @@ export default function MainPage(props){
         </>
         )
     }
-    else { return (
+    else if(searchParams.toString().length!==0){
+        dispatch(getCoinsByParams(props.category,searchParams.toString()));
+        console.log(searchParams.length)
+        return(
+            <>
+            <Searchbox/>
+            <CoinsList/>
+        </>
+        )
+    }
+    else {
+        return (
         <>
             <Searchbox/>
             <ul className="coins-categories">

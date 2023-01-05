@@ -1,23 +1,25 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import "./styles/coinsList.css";
+import { useSelector } from "react-redux";
 
 export default function CoinsList(){
-    return (
+    let coinsList = useSelector((state)=>state.current.coinsCategory);
+    let [searchParams, setSearchParams]= useSearchParams()
+    
+    useEffect(()=>{},[coinsList])
+    console.log(searchParams.toString(),window.location.pathname)
+    return (coinsList) ?
+    
+    
+     (
         <>
         <p className="list-name">Результаты:</p>
         <ul className="coins-list">
-            <li><Link className="link-to-description" to="/CoinPage"><img src="./images/1.png" alt="coin" /><h3>Имя монеты</h3><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae enim placeat repellendus vitae aliquam possimus, impedit nobis nulla.</p></Link></li>
-            <li><Link className="link-to-description" to="/CoinPage"><img src="./images/1.png" alt="coin" /><h3>Name of coin</h3><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo nesciunt dolores magnam tempore numquam ad commodi harum culpa!</p></Link></li>
-            <li><Link className="link-to-description" to="/CoinPage"><img src="./images/1.png" alt="coin" /><h3>Name of coin</h3><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo nesciunt dolores magnam tempore numquam ad commodi harum culpa!</p></Link></li>
-            <li><Link className="link-to-description" to="/CoinPage"><img src="./images/1.png" alt="coin" /><h3>Name of coin</h3><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo nesciunt dolores magnam tempore numquam ad commodi harum culpa!</p></Link></li>
-            <li><Link className="link-to-description" to="/CoinPage"><img src="./images/1.png" alt="coin" /><h3>Name of coin</h3><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo nesciunt dolores magnam tempore numquam ad commodi harum culpa!</p></Link></li>
-            <li><Link className="link-to-description" to="/CoinPage"><img src="./images/1.png" alt="coin" /><h3>Name of coin</h3><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo nesciunt dolores magnam tempore numquam ad commodi harum culpa!</p></Link></li>
-            <li><Link className="link-to-description" to="/CoinPage"><img src="./images/1.png" alt="coin" /><h3>Name of coin</h3><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo nesciunt dolores magnam tempore numquam ad commodi harum culpa!</p></Link></li>
-            <li><Link className="link-to-description" to="/CoinPage"><img src="./images/1.png" alt="coin" /><h3>Name of coin</h3><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo nesciunt dolores magnam tempore numquam ad commodi harum culpa!</p></Link></li>
-            <li><Link className="link-to-description" to="/CoinPage"><img src="./images/1.png" alt="coin" /><h3>Name of coin</h3><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo nesciunt dolores magnam tempore numquam ad commodi harum culpa!</p></Link></li>
-            <li><Link className="link-to-description" to="/CoinPage"><img src="./images/1.png" alt="coin" /><h3>Name of coin</h3><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo nesciunt dolores magnam tempore numquam ad commodi harum culpa!</p></Link></li>
+            {coinsList.map((coin)=>{
+                return <li key={coin.id}><Link className="link-to-description" to={"/"+coin.id}><img src={coin.obverse} alt="coin" /><h3>{coin.name}</h3><p>{coin.shortDescription}</p></Link></li>
+            })}
         </ul>
         </>
-    )
+    ): <h1>LOADING...</h1>
 }
